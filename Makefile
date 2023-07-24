@@ -7,8 +7,7 @@ run:
 build:
 	go build -o $(BINARY)
 
-# Compile without optimizations. This makes using dlv much easier
-builddebug:
+builddebug: # Compile without optimizations. This makes using dlv much easier
 	go build -gcflags="all=-N -l" -o $(BINARY)
 
 test:
@@ -16,3 +15,7 @@ test:
 
 clean:
 	rm -f $(BINARY)
+
+install: # Install dependencies. Not to be confused with go install
+	go mod tidy
+	go install github.com/onsi/ginkgo/v2/ginkgo
