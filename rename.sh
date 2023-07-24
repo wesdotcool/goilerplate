@@ -29,6 +29,8 @@ cd $1
 find . -type f -regex '^./[^.].*' | xargs sed -i '.bak' -e "s/goilerplate/$1/g"
 rm -f *.bak
 rm -f */*.bak
+find . -type f -regex '^./.gitignore' | xargs sed -i '.bak' -e "s/goilerplate/$1/g"
+rm -f .gitignore.bak
 rm -f rename.sh
 
 echo "===================================================="
