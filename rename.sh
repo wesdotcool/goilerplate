@@ -32,11 +32,14 @@ rm -f */*.bak
 find . -type f -regex '^./.gitignore' | xargs sed -i '.bak' -e "s/goilerplate/$1/g"
 rm -f .gitignore.bak
 rm -f rename.sh
+if command -v git &> /dev/null
+then
+    git remote remove origin
+fi
 
 echo "===================================================="
 echo "Successfully renamed 'goilerplate' to '$1'. Be aware YOUR DIRECTORY HAS CHANGED"
 echo "You can see the changes made by running 'git status'"
 echo "Please consider updating git remotes with:"
-echo "  git remote remove origin"
 echo "  git remote add origin https://github.com/<USERNAME>/$1.git"
 echo "Don't forget to update the README (^_^)"

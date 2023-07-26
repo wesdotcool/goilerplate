@@ -19,3 +19,13 @@ clean:
 install: # Install dependencies. Not to be confused with go install
 	go mod tidy
 	go install github.com/onsi/ginkgo/v2/ginkgo
+
+define HELPSTRING
+Run the following commands to copy and rename this project to your own:
+  source rename.sh <PROJECT_NAME>
+  make install
+  make test
+endef
+export HELPSTRING
+help: # Explains how to use goilerplate
+	@echo "$$HELPSTRING"
